@@ -12,3 +12,9 @@ build for Github Hack Night Jan 29, 2026
 
 
 ![REDG Visualization 2](readme/Pasted%20Graphic%202.png)
+
+
+![REDG Visualization 3](readme/Pasted%20Graphic%203.png)
+
+
+![REDG Visualization 4](readme/Pasted%20Graphic%204.png)
