@@ -7,3 +7,8 @@ clustering algorithms can read and derive distinct identities from overlapping a
 
 
 build for Github Hack Night Jan 29, 2026
+
+![REDG Visualization](readme/Pasted%20Graphic.png)
+
+
+![REDG Visualization 2](readme/Pasted%20Graphic%202.png)
