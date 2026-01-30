@@ -1,0 +1,74 @@
+type Query {
+  """Get all subjects (identifiers)"""
+  subjects: [String!]!
+  
+  """Get statements by subject identifier"""
+  statementsBySubject(identifier: String!, limit: Int!, offset: Int!): PaginatedStatementsResult!
+  
+  """Get statements by predicate"""
+  statementsByPredicate(predicate: String!, limit: Int!, offset: Int!): PaginatedStatementsResult!
+  
+  """Search statements by object value"""
+  searchStatements(query: String!): [Statement!]!
+  
+  """Get a single statement by ID"""
+  statement(id: ID!): Statement
+  
+  """Get paginated statements"""
+  paginatedStatements(limit: Int!, offset: Int!): PaginatedStatementsResult!
+}
+
+type Mutation {
+  """Create a new statement"""
+  createStatement(input: CreateStatementInput!): Statement!
+  
+  """Delete a statement"""
+  deleteStatement(id: ID!): DeleteResult!
+  
+  """Ingest data from CSV, JSON, or XML"""
+  ingest(
+    data: String!
+    format: String!
+    sourceName: String!
+  ): IngestResult!
+}
+
+input CreateStatementInput {
+  subject_identifier: String!
+  predicate: String!
+  object_value: JSON!
+  source_id: ID
+  statement_timestamp: String
+}
+
+"""Statement - Pure triple"""
+type Statement {
+  id: ID!
+  subject_identifier: String!
+  predicate: String!
+  object_value: JSON!
+  source_id: ID
+  statement_timestamp: String!
+  created_at: String!
+}
+
+type DeleteResult {
+  success: Boolean!
+  message: String!
+  id: ID!
+}
+
+type IngestResult {
+  success: Boolean!
+  message: String!
+  entities_created: Int!
+  statements_created: Int!
+}
+
+type PaginatedStatementsResult {
+  statements: [Statement!]!
+  totalCount: Int!
+  hasMore: Boolean!
+}
+
+scalar JSON
